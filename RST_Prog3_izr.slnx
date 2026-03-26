@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MyFunctions/MyFunctions.csproj" />
+  <Project Path="RST_Prog3_izr/RST_Prog3_izr.csproj" />
+  <Project Path="WinFormsTest/WinFormsTest.csproj" />
+</Solution>
