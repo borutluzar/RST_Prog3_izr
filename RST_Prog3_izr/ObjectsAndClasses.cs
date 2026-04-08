@@ -1,6 +1,6 @@
 ﻿namespace RST_Prog3_izr
 {
-    public class Table // Glava razreda
+    public class TableOld // Glava razreda
     {
         // Jedro razreda
 
@@ -23,7 +23,7 @@
             }
         }
 
-        
+
         // Za material smo dodali nov enumerator
         public Material Material { get; set; }
 
@@ -38,7 +38,7 @@
         /// Konstruktor za kreiranje mize s serijsko številko
         /// </summary>
         /// <param name="sn">Vrednost serijske številke</param>
-        public Table(int sn)
+        public TableOld(int sn)
         {
             serNum = sn;
             this.Material = Material.Glass;
@@ -47,12 +47,12 @@
         /// <summary>
         /// Prazen konstruktor
         /// </summary>
-        public Table()
+        public TableOld()
         {
             serNum = 1;
         }
-    }  
-    
+    }
+
     public enum Material
     {
         Wood = 1,
