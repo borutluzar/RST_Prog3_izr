@@ -56,13 +56,70 @@ namespace RST_Prog3_izr
             }
             */
 
-            ChessPiece figura = new Queen(Color.Black) { Position = new ChessBoardField(1,1)};
-            Console.WriteLine($"{figura}");            
+            /*
+            ChessPiece figura = new Queen(Color.Black) { Position = new ChessBoardField(1, 1) };
+            Console.WriteLine($"{figura}");
             figura.Move(new ChessBoardField(1, 2));
             Console.WriteLine($"{figura}");
+            //object x = figura.Dummy;      
+            //((Queen)figura).Dummy;
+            */
 
+            /*
+            Application gta6 = new Application("EA Games", "Matjaž");
+            Application gemini = new Application("Google", "Tony");
+            File exam = new File("Borut");
+            Exhibition exhib = new Exhibition("Vincent");
+
+            List<IMetaData> lst = new List<IMetaData>() { gta6, gemini, exam, exhib };
+
+            foreach (IMetaData item in lst) 
+            {
+                Console.WriteLine($"Vmesniki, katerim instanca pripada: {string.Join(", ", item.GetType().GetInterfaces())}");
+                Console.WriteLine($"Avtor objekta je {item.Author}");
+
+                // item je tipa IMetaData, zato ne vidi lastnosti RAMConsumption
+                //item.RAMConsumption
+
+                // Objekt gta6 jo vidi
+                //gta6.RAMConsumption
+
+                // Uporabimo is in casting
+                if(item is Application)
+                {                    
+                    Console.WriteLine($"Poraba RAM-a je {((Application)item).RAMConsumption}");
+                }
+                if(item is IExample)
+                {
+                    Console.WriteLine($"IExample avtor pa je {((IExample)item).Author}");
+                }
+            }
+            */
+
+            // Primer singletona
+            Singleton single = Singleton.GetInstance();
+
+            EventLog evnt = EventLog.GetInstance();
+            evnt.WriteEvent("Zgodil se je dogodek!");
+
+            Event1();
+            Event2();
+
+            Console.WriteLine("Program se zaključuje!");
 
             Console.ReadLine();
+        }
+
+        public static void Event1()
+        {
+            EventLog evnt = EventLog.GetInstance();
+            evnt.WriteEvent("Zgodil se je dogodek 2!");
+        }
+
+        public static void Event2()
+        {
+            EventLog evnt = EventLog.GetInstance();
+            evnt.WriteEvent("Zgodil se je dogodek 3!");
         }
     }
 }

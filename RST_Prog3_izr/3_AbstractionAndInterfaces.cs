@@ -9,6 +9,11 @@ namespace RST_Prog3_izr
     public class BoardField
     {
         // Iščemo primerno lastnost
+
+        public override string ToString()
+        {
+            return $"Samo za primer!";
+        }
     }
 
     public class ChessBoardField : BoardField
@@ -100,18 +105,32 @@ namespace RST_Prog3_izr
         string? Organization { get; set; }
     }
 
-
-    public class Application : IMetaData
+    public interface IExample
     {
-        public string Author { get; set; }
+        // Funkcija z enakim podpisom, ki predstavlja avtorja ideje za npr. aplikacijo
+        string Author { get; set; }
+    }
+
+
+    public class Application : IMetaData, IExample
+    {
+        string IMetaData.Author { get; set; }
+
+        // Eksplicitna implementacija
+        string IExample.Author { get; set; }
 
         public DateTime DateCreated { get; }
 
         public string? Organization { get; set; }
+
+        
+        public int RAMConsumption { get; set; }
+        public string GetInstructions() { return "There are no instructions!"; }
      
-        public Application(string author)
+        public Application(string authorMD, string authorEx)
         {
-            Author = author;
+            ((IMetaData)this).Author = authorMD;
+            ((IExample)this).Author = authorEx;
         }
     }
 
@@ -129,7 +148,7 @@ namespace RST_Prog3_izr
         }
     }
 
-    public class Exhibition : IMetaData
+    public class Exhibition : IMetaData, IExample
     {
         public string Author { get; set; }
 
