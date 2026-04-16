@@ -1,9 +1,12 @@
-﻿namespace RST_Prog3_izr
+﻿using System.Drawing;
+
+namespace RST_Prog3_izr
 {
     public class Program
     {
         static void Main(string[] args)
         {
+            /*
             TableOld mizaVKuhinji = new TableOld(12);
             TableOld mizaVDnevni = new TableOld(22);
             TableOld mizaNaHodniku = new TableOld(42);
@@ -18,9 +21,10 @@
 
             Console.WriteLine($"Miza {nameof(mizaVKuhinji)} ima serijsko številko {mizaVKuhinji.SerialNumber}.");
             Console.WriteLine($"Miza {nameof(mizaVDnevni)} ima serijsko številko {mizaVDnevni.SerialNumber}.");
-
+            */
 
             // Dedovanje
+            /*
             Furniture omara = new Furniture(1);
             Console.WriteLine($"Naša omara: {omara.ToString()}");
             omara.Pack();
@@ -50,6 +54,13 @@
             {
                 pohistvo.Pack();
             }
+            */
+
+            Piece figura = new Queen(Color.Black) { Position = new ChessBoardField(1,1)};
+            Console.WriteLine($"{figura}");            
+            figura.Move(new ChessBoardField(1, 2));
+            Console.WriteLine($"{figura}");
+
 
             Console.ReadLine();
         }
