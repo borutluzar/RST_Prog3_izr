@@ -56,7 +56,7 @@ namespace RST_Prog3_izr
             }
             */
 
-            Piece figura = new Queen(Color.Black) { Position = new ChessBoardField(1,1)};
+            ChessPiece figura = new Queen(Color.Black) { Position = new ChessBoardField(1,1)};
             Console.WriteLine($"{figura}");            
             figura.Move(new ChessBoardField(1, 2));
             Console.WriteLine($"{figura}");
