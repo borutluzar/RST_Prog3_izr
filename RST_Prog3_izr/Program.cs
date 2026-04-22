@@ -96,6 +96,7 @@ namespace RST_Prog3_izr
             }
             */
 
+            /*
             // Primer singletona
             Singleton single = Singleton.GetInstance();
 
@@ -106,6 +107,45 @@ namespace RST_Prog3_izr
             Event2();
 
             Console.WriteLine("Program se zaključuje!");
+            */
+
+            /*
+            // Factory
+            Console.Write($"Izberite tip kreditne kartice: ");
+            CreditCardType type = Enum.Parse<CreditCardType>(Console.ReadLine());
+            ICreditCard? kartica = CreditCardFactory.CreateCreditCard(type);
+            */
+
+            /* Kreiranje instanc želimo prenesti z uporabniškega dela v zaledje
+            ICreditCard? kartica = null;
+            switch (type)
+            {
+                case CreditCardType.Silver:
+                    // Kreiramo novo kartico
+                    kartica = new SilverCard(/* lahko kompleksni parametri, katerih vrednosti dobimo iz baze */
+            /*);
+              break;
+          case CreditCardType.Gold:
+              // Kreiramo novo kartico
+              kartica = new GoldCard();
+              break;
+          case CreditCardType.Platinum:
+              // Kreiramo novo kartico
+              kartica = new PlatinumCard();
+              break;
+          case CreditCardType.Student:
+              // Kreiramo novo kartico
+              kartica = new StudentCard();
+              break;
+      }
+      */
+
+            //Console.WriteLine($"Čestitke, vaša je nova kartica tipa {kartica.CreditCardType}");
+
+
+            // Builder
+            Computer? comp = ComputerFactory.CreateComputer(ComputerType.GamingLaptop);
+            comp?.DisplaySpecs();
 
             Console.ReadLine();
         }
