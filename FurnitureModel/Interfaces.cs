@@ -8,8 +8,6 @@ namespace FurnitureModel
     {
         int InventoryQuantity { get; set; }
         void DisplayDetails();
-
-        //static
     }
 
     public interface IOutdoorDurable

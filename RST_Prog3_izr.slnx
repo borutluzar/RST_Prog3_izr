@@ -1,7 +1,6 @@
 <Solution>
   <Project Path="FurnitureInventory/FurnitureInventory.csproj" Id="1d28633f-1d65-41f8-89b4-ee5e893c9342" />
   <Project Path="FurnitureModel/FurnitureModel.csproj" Id="c6754323-eae4-4abc-88f1-127b902f20e3" />
-  <Project Path="MyFunctions/MyFunctions.csproj" />
   <Project Path="RST_Prog3_izr/RST_Prog3_izr.csproj" />
   <Project Path="WinFormsTest/WinFormsTest.csproj" />
 </Solution>

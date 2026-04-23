@@ -10,7 +10,7 @@ namespace FurnitureInventory
         private InventoryManager(string name, string address)
         {
             this.Items = new List<Furniture>();
-            this.BasicData = new BasicData() { Name = name, Address = address };            
+            this.BasicData = new BasicData() { Name = name, Address = address };
         }
 
         public BasicData BasicData { get; }
@@ -20,7 +20,7 @@ namespace FurnitureInventory
 
         public static InventoryManager GetInstance(string name, string address)
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new InventoryManager(name, address);
             }

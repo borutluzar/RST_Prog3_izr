@@ -11,6 +11,18 @@ namespace FurnitureModel
         BookShelf = 5
     }
 
+    public enum ParameterName
+    {
+        Name = 1,
+        Description = 2,
+        Price = 3,
+        EANCode = 4,
+        InventoryQuantity = 5,
+        Capacity = 6,
+        IsUpholstered = 7,
+        FabricType = 8
+    }
+
     public abstract class Furniture : IInventoryItem
     {
         internal Furniture(int id)
@@ -37,9 +49,16 @@ namespace FurnitureModel
                 $"Opis: {this.Description}");
         }
 
-        internal static List<string> ParameterList()
+        internal static List<ParameterName> ParameterList()
         {
-            return new List<string>() { "Name", "Description", "Price", "EANCode", "InventoryQuantity" };
+            return new List<ParameterName>()
+                {
+                ParameterName.Name,
+                ParameterName.Description,
+                ParameterName.Price,
+                ParameterName.EANCode,
+                ParameterName.InventoryQuantity
+            };
         }
     }
 
@@ -51,11 +70,18 @@ namespace FurnitureModel
 
         public bool IsUpholstered { get; set; }
 
-        new internal static List<string> ParameterList()
+        new internal static List<ParameterName> ParameterList()
         {
             var lst = Furniture.ParameterList();
-            lst.AddRange(["Capacity", "IsUpholstered"]);
+            lst.AddRange([ParameterName.Capacity, ParameterName.IsUpholstered]);
             return lst;
+        }
+
+        public override void DisplayDetails()
+        {
+            base.DisplayDetails();
+            Console.WriteLine($"Kapaciteta: {this.Capacity}\n" +
+                $"Je oblazinjeno: {this.IsUpholstered}");
         }
     }
 
@@ -120,11 +146,17 @@ namespace FurnitureModel
 
         public string? FabricType { get; set; }
 
-        new internal static List<string> ParameterList()
+        new internal static List<ParameterName> ParameterList()
         {
             var lst = SeatingFurniture.ParameterList();
-            lst.AddRange(["FabricType"]);
+            lst.AddRange([ParameterName.FabricType]);
             return lst;
+        }
+
+        public override void DisplayDetails()
+        {
+            base.DisplayDetails();
+            Console.WriteLine($"Tip blaga: {this.FabricType}");
         }
     }
 
@@ -137,7 +169,7 @@ namespace FurnitureModel
 
     public class BookShelf : StorageFurniture, IAssemblyRequired
     {
-        internal BookShelf(int id) : base(id) 
+        internal BookShelf(int id) : base(id)
         {
             this.AssemblyTools = new();
         }
