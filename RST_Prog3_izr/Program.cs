@@ -14,8 +14,10 @@ namespace RST_Prog3_izr
         Lecture_04_Factory = 41,  // 22. 4. 2026
         Lecture_04_Builder = 42,  // 22. 4. 2026
         Lecture_05 = 5,  // 23. 4. 2026
-        Lecture_06 = 6,  //  5. 5. 2026
-        Lecture_07 = 7,  // 11. 5. 2026
+        Lecture_06_Decorator = 6,  //  5. 5. 2026
+        Lecture_06_Proxy = 7,  //  5. 5. 2026
+        Lecture_06_Extensions = 8,  //  5. 5. 2026
+        Lecture_07 = 9,  // 11. 5. 2026
     }
 
     public class Program
@@ -176,6 +178,73 @@ namespace RST_Prog3_izr
                     {
                         Computer? comp = ComputerFactory.CreateComputer(ComputerType.GamingLaptop);
                         comp?.DisplaySpecs();
+                    }
+                    break;
+
+                case Lecture.Lecture_05:
+                    {
+                        // Delali smo na projektih FurnitureInventory in FurnitureModel
+                    }
+                    break;
+
+                case Lecture.Lecture_06_Decorator:
+                    {
+                        Pizza pizza = new Pepperoni();
+                        Console.WriteLine($"Naša pizza: {pizza.Description}");
+
+                        EggOnPizza pizza2 = new EggOnPizza(pizza);
+                        Console.WriteLine($"Naša pizza: {pizza2.Description}");
+
+                        HamOnPizza pizza4 = new HamOnPizza(pizza2);
+                        Console.WriteLine($"Naša pizza: {pizza4.Description}");
+
+                        EggOnPizza pizza3 = new EggOnPizza(pizza4);
+                        Console.WriteLine($"Naša pizza: {pizza3.Description}");
+                    }
+                    break;
+
+                case Lecture.Lecture_06_Proxy:
+                    {
+                        // Primer za varnostni proxy
+                        OfficeInternetProxy connector = new OfficeInternetProxy();
+                        connector.ConnectTo("facebook.com");
+                        connector.ConnectTo("bbc.com");
+
+                        // Primer za virtualni proxy
+                        List<IPost> lstFeed = new();
+
+                        for (int i = 0; i < 100; i++)
+                        {
+                            PostProxy postProxy = new PostProxy($"img_{i}.jpg");
+                            lstFeed.Add(postProxy);
+                        }
+
+                        Console.WriteLine("Odprli smo feed...");
+                        Console.WriteLine("Uporabnik drsa po objavah...");
+
+                        Console.WriteLine("Uporabnik se je ustavil na objavi 45...");
+                        lstFeed[44].ShowPost(); // 3s
+
+                        Console.WriteLine("Uporabnik se je ustavil na objavi 96...");
+                        lstFeed[95].ShowPost(); // 3s 
+
+                        Console.WriteLine("Uporabnik se vrne na objavo 45...");
+                        lstFeed[44].ShowPost(); // 0s
+                    }
+                    break;
+
+                case Lecture.Lecture_06_Extensions:
+                    {
+                        string beseda = "Joj, kako je danes lep dan!";
+                        int vowels = beseda.CountVowels();
+                        Console.WriteLine($"Število samoglasnikov v \"{beseda}\" je {vowels}");
+
+
+                        int countA = beseda.CountCharacters('a');
+                        Console.WriteLine($"Število pojavitev 'a' v \"{beseda}\" je {countA}");
+                        // Drug način klica funkcije
+                        int countAStatic = Extensions.CountCharacters(beseda, 'a');
+                        Console.WriteLine($"Število pojavitev 'a' v \"{beseda}\" je {countAStatic}");
                     }
                     break;
             }
