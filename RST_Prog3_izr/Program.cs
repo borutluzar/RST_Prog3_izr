@@ -8,16 +8,18 @@ namespace RST_Prog3_izr
     {
         Lecture_01 = 1,  // 26. 3. 2026
         Lecture_02 = 2,  //  8. 4. 2026
-        Lecture_03_Abstraction = 31,  // 16. 4. 2026
-        Lecture_03_Interfaces = 32,  // 16. 4. 2026
-        Lecture_03_Singleton = 33, // 16. 4. 2026
-        Lecture_04_Factory = 41,  // 22. 4. 2026
-        Lecture_04_Builder = 42,  // 22. 4. 2026
-        Lecture_05 = 5,  // 23. 4. 2026
-        Lecture_06_Decorator = 6,  //  5. 5. 2026
-        Lecture_06_Proxy = 7,  //  5. 5. 2026
-        Lecture_06_Extensions = 8,  //  5. 5. 2026
-        Lecture_07 = 9,  // 11. 5. 2026
+        Lecture_03_Abstraction = 3,  // 16. 4. 2026
+        Lecture_03_Interfaces = 4,  // 16. 4. 2026
+        Lecture_03_Singleton = 5, // 16. 4. 2026
+        Lecture_04_Factory = 6,  // 22. 4. 2026
+        Lecture_04_Builder = 7,  // 22. 4. 2026
+        Lecture_05 = 8,  // 23. 4. 2026
+        Lecture_06_Decorator = 9,  //  5. 5. 2026
+        Lecture_06_Proxy = 10,  //  5. 5. 2026
+        Lecture_06_Extensions = 11,  //  5. 5. 2026
+        Lecture_07_Observer = 12,  // 11. 5. 2026
+        Lecture_07_Observer_Event = 13,  // 11. 5. 2026
+        Lecture_07_Strategy = 14  // 11. 5. 2026
     }
 
     public class Program
@@ -245,6 +247,64 @@ namespace RST_Prog3_izr
                         // Drug način klica funkcije
                         int countAStatic = Extensions.CountCharacters(beseda, 'a');
                         Console.WriteLine($"Število pojavitev 'a' v \"{beseda}\" je {countAStatic}");
+                    }
+                    break;
+
+                case Lecture.Lecture_07_Observer:
+                    {
+                        // Instanca subjekta
+                        StockMarket market = new StockMarket();
+
+                        // Instance opazovalcev
+                        EmailObserver email1 = new EmailObserver("borut@g.com", 100);
+                        EmailObserver email2 = new EmailObserver("luzar@g.com", 120);
+                        DisplayObserver display = new DisplayObserver();
+
+                        // Prijavimo 
+                        market.Subscribe(email1);
+                        market.Subscribe(email2);
+                        market.Subscribe(display);
+
+                        // Spremenimo 
+                        market.SetStockPrice(110);
+                        market.SetStockPrice(90);
+
+                        display.GetStatistics();
+
+                        // Odjavimo drugi email
+                        market.Unsubscribe(email2);
+                        market.SetStockPrice(80);
+                    }
+                    break;
+
+                case Lecture.Lecture_07_Observer_Event:
+                    {
+                        // Subjekt
+                        TemperatureSensor sensor = new TemperatureSensor();
+
+                        // Opazovalca
+                        ConsoleDisplay display = new ConsoleDisplay();
+                        AlarmSystem alarm = new AlarmSystem();
+
+                        // Prijavimo opazovalca
+                        sensor.OnTemperatureChanged += display.UpdateDisplay;
+                        sensor.OnTemperatureChanged += alarm.CheckTemperature;
+
+                        // Spremenimo temperaturo
+                        sensor.SetTemperature(25);
+                        sensor.SetTemperature(60);
+                        sensor.SetTemperature(115);
+
+                        // Odjavimo display
+                        sensor.OnTemperatureChanged -= display.UpdateDisplay;
+                        
+                        sensor.SetTemperature(101);
+                    }
+                    break;
+
+                case Lecture.Lecture_07_Strategy:
+                    {
+
                     }
                     break;
             }
