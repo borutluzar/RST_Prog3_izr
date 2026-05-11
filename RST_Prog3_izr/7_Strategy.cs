@@ -87,9 +87,9 @@ namespace RST_Prog3_izr
     {
         public Janitor(string familyName, string givenName) : base(familyName, givenName) 
         {
-            this.LanguageSpeaker = new SpeakForeignLanguageNot();
+            this.LanguageSpeaker = new SpeakForeignLanguageNot();            
         }
-
+        
         public override void WorkDuties()
         {
             base.WorkDuties();
