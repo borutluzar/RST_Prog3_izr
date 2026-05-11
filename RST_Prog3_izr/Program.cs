@@ -304,7 +304,15 @@ namespace RST_Prog3_izr
 
                 case Lecture.Lecture_07_Strategy:
                     {
+                        Researcher toby = new Researcher("Novak", "Toby");
+                        Lecturer janez = new Lecturer("Novak", "Janez");
+                        PRPerson tanja = new PRPerson("Novak", "Tanja");
+                        Janitor toni = new Janitor("Novak", "Toni");
 
+                        toby.TrySpeakForeignLanguage("francoščina");
+                        janez.TrySpeakForeignLanguage("francoščina");
+                        tanja.TrySpeakForeignLanguage("francoščina");
+                        toni.TrySpeakForeignLanguage("francoščina");
                     }
                     break;
             }
